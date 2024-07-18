@@ -1,0 +1,58 @@
+NAME: 'v8_lifejacket_safety_pseudo.20231110.box.256pad.{}.{}.emb{}.vtb{}.bs{}.{}e.{}.{}.{}.lrft{}.lrnew{}'
+
+DATASET:
+  TYPE: 'pedes'
+  NAME: 'PPAR'
+  TRAIN_SPLIT: 'train'
+  VAL_SPLIT: 'val'
+  ZERO_SHOT: False
+  LABEL: 'eval'
+  HEIGHT: 224
+  WIDTH: 224
+  PATH: 'data/PPAR/dataset_v8_lifejacket_safety_pseudo.pkl'
+
+RELOAD:
+  TYPE: False
+  NAME: 'backbone'
+
+BACKBONE:
+#  TYPE: 'swin_b'
+ TYPE: 'swin_b_solider'
+
+CLASSIFIER:
+  # NAME: 'linear'
+  NAME: 'mldecoder'
+  QRATIO: 1
+  LRATIO: 1
+  # NAME: 'q2l'
+  POOLING: 'avg'
+  SCALE: 1
+  BN: False
+
+LOSS:
+  TYPE: 'aplloss'
+  LOSS_WEIGHT: [1]
+  SAMPLE_WEIGHT: 'weight'
+
+
+TRAIN:
+  USE_LABEL_EMBEDDING: False
+  USE_VTB: False # ViT only
+  CLIP_GRAD: True
+  BATCH_SIZE: 64
+  MAX_EPOCH: 80
+  OPTIMIZER:
+    TYPE: 'adamw'
+    WEIGHT_DECAY: 1e-4
+  LR_SCHEDULER:
+    TYPE: 'annealing_cosine'
+    LR_FT: 0.00002
+    LR_NEW: 0.00002
+  EMA:
+    ENABLE: False
+
+METRIC:
+  TYPE: 'pedestrian'
+
+VIS:
+  CAM: 'valid'

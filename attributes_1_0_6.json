@@ -1,0 +1,212 @@
+{
+	"version": "1.0.6",
+	"attributes": {
+		"overall": {
+			"is_not_human": [
+				false,
+				"shadow",
+				"reflect",
+				"other"
+			],
+			"is_incomplete": [
+				false,
+				true
+			],
+			"is_bitrate_error": [
+				false,
+				true
+			],
+			"is_crowd": [
+				false,
+				true
+			],
+			"person_action": {
+				"cigarette_smoking": [
+					false,
+					true
+				],
+				"cigarette_holding": [
+					false,
+					true
+				],
+				"phone_playing": [
+					false,
+					true
+				],
+				"phone_calling": [
+					false,
+					true
+				]
+			},
+			"person_posture": [
+				"unsure",
+				"stand",
+				"sit",
+				"ride_bicycle",
+				"push_bicycle",
+				"bow",
+				"crouch",
+				"fall",
+				"jump",
+				"climb"
+			],
+			"person_orientation": [
+				"unsure",
+				"front",
+				"side",
+				"back"
+			],
+			"image_lighting": [
+				"normal",
+				"dark",
+				"bright"
+			],
+			"camera_pose": [
+				"unsure",
+				"up_down",
+				"down_up",
+				"horizontal",
+				"top_bottom"
+			]
+		},
+		"head_top": {
+			"blocked": [
+				false,
+				true
+			],
+			"helmet": [
+				false,
+				true,
+				"unsure"
+			],
+			"hat": [
+				false,
+				true,
+				"unsure"
+			],
+			"color": [
+				"unsure",
+				"mix",
+				"red",
+				"orange",
+				"yellow",
+				"green",
+				"blue",
+				"purple",
+				"pink",
+				"black",
+				"white",
+				"grey",
+				"brown"
+			]
+		},
+		"head_face": {
+			"blocked": [
+				false,
+				true
+			],
+			"glasses": [
+				false,
+				true,
+				"unsure"
+			],
+			"goggles": [
+				false,
+				true,
+				"unsure"
+			],
+			"safety_mask": [
+				false,
+				"unsure",
+				"welding_mask",
+				"transparent_mask"
+			]
+		},
+		"body_upper": {
+			"blocked": [
+				false,
+				true
+			],
+			"safety_belt": [
+				false,
+				true,
+				"unsure"
+			],
+			"wearing": [
+				false,
+				"unsure",
+				"cloth",
+				"uniform"
+			],
+			"lifejacket": [
+				false,
+				"unsure",
+				"neck",
+				"belt",
+				"vest"
+			],
+			"short_sleeve": [
+				false,
+				true,
+				"unsure"
+			],
+			"reflective_vest": [
+				false,
+				"unsure",
+				"green",
+				"yellow",
+				"orange"
+			],
+			"color": [
+				"unsure",
+				"mix",
+				"red",
+				"orange",
+				"yellow",
+				"green",
+				"blue",
+				"purple",
+				"pink",
+				"black",
+				"white",
+				"grey",
+				"brown"
+			]
+		},
+		"body_lower": {
+			"blocked": [
+				false,
+				true
+			],
+			"wearing": [
+				false,
+				"unsure",
+				"cloth",
+				"uniform"
+			],
+			"short_trousers": [
+				false,
+				true,
+				"unsure"
+			],
+			"color": [
+				"unsure",
+				"mix",
+				"red",
+				"orange",
+				"yellow",
+				"green",
+				"blue",
+				"purple",
+				"pink",
+				"black",
+				"white",
+				"grey",
+				"brown"
+			]
+		}
+	},
+	"imagePath": "sample.jpg",
+	"imageHeight": 640,
+	"imageWidth": 640
+}

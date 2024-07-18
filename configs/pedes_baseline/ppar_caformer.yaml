@@ -1,0 +1,55 @@
+NAME: 'batch8.20231117.caformer.pseudo5labels.224pad.{}.{}.emb{}.vtb{}.bs{}.{}e.{}.{}.{}.lrft{}.lrnew{}'
+
+DATASET:
+  TYPE: 'pedes'
+  NAME: 'PPAR'
+  TRAIN_SPLIT: 'train'
+  VAL_SPLIT: 'val'
+  ZERO_SHOT: False
+  LABEL: 'eval'
+  HEIGHT: 224
+  WIDTH: 224
+  PATH: data/PPAR/dataset_v8_5labels_peseudo_20231116.pkl
+
+RELOAD:
+  TYPE: False
+  NAME: 'backbone'
+
+BACKBONE:
+ TYPE: 'caformer_s18.sail_in22k_ft_in1k'
+
+CLASSIFIER:
+  # NAME: 'linear'
+  NAME: 'mldecoder'
+  # NAME: 'q2l'
+  POOLING: 'avg'
+  SCALE: 1
+  BN: False
+
+LOSS:
+  TYPE: 'aplloss'
+  LOSS_WEIGHT: [1]
+  SAMPLE_WEIGHT: 'weight'
+
+
+TRAIN:
+  USE_LABEL_EMBEDDING: False
+  USE_VTB: False
+  CLIP_GRAD: True
+  BATCH_SIZE: 128
+  MAX_EPOCH: 100
+  OPTIMIZER:
+    TYPE: 'adamw'
+    WEIGHT_DECAY: 1e-4
+  LR_SCHEDULER:
+    TYPE: 'annealing_cosine'
+    LR_FT: 0.0001
+    LR_NEW: 0.0001
+  EMA:
+    ENABLE: False
+
+METRIC:
+  TYPE: 'pedestrian'
+
+VIS:
+  CAM: 'valid'

@@ -1,0 +1,59 @@
+NAME: 'test.colorjitter.asl.adamw.batch6-1.mldecoder'
+
+DATASET:
+  TYPE: 'pedes'
+  NAME: 'PPAR'
+  TRAIN_SPLIT: 'train'
+  VAL_SPLIT: 'val'
+  ZERO_SHOT: False
+  LABEL: 'eval'
+  HEIGHT: 512
+  WIDTH: 512
+
+RELOAD:
+  TYPE: False
+  NAME: 'backbone'
+
+BACKBONE:
+  # TYPE: 'resnet50'
+#  TYPE: 'bninception'
+#  TYPE: 'tresnetM'
+#  TYPE: 'swin_b'
+  TYPE:  'maxvit_base_tf_512.in21k_ft_in1k'
+#  TYPE: 'vit_s'
+#  TYPE: 'vit_b'
+  # TYPE: 'convnext_b'
+
+CLASSIFIER:
+  # NAME: 'linear'
+  NAME: 'mldecoder'
+  # NAME: 'q2l'
+  POOLING: 'avg'
+  SCALE: 1
+  BN: False
+
+LOSS:
+  TYPE: 'aslloss'
+  LOSS_WEIGHT: [1]
+  SAMPLE_WEIGHT: 'weight'
+
+
+TRAIN:
+  CLIP_GRAD: True
+  BATCH_SIZE: 16
+  MAX_EPOCH: 50
+  OPTIMIZER:
+    TYPE: 'adamw'
+    WEIGHT_DECAY: 1e-4
+  LR_SCHEDULER:
+    TYPE: 'annealing_cosine'
+    LR_FT: 0.0002
+    LR_NEW: 0.0002
+  EMA:
+    ENABLE: False
+
+METRIC:
+  TYPE: 'pedestrian'
+
+VIS:
+  CAM: 'valid'

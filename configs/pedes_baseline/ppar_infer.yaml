@@ -1,0 +1,61 @@
+NAME: 'swin_base.with_embedding.colorjitter.asl.adamw.batch6-1.mldecoder'
+
+DATASET:
+  TYPE: 'pedes'
+  NAME: 'PPAR'
+  TRAIN_SPLIT: 'train'
+  VAL_SPLIT: 'val'
+  ZERO_SHOT: False
+  LABEL: 'eval'
+  HEIGHT: 256
+  WIDTH: 128
+
+RELOAD:
+  TYPE: False
+  NAME: 'backbone'
+
+BACKBONE:
+  # TYPE: 'resnet50'
+#  TYPE: 'bninception'
+#  TYPE: 'tresnetM'
+ TYPE: 'swin_b'
+#  TYPE: 'swin_b_solider'
+#  TYPE: 'vit_s'
+#  TYPE: 'vit_b'
+  # TYPE: 'convnext_b'
+  # TYPE: 'swinv2_base_window8_256.ms_in1k'
+
+CLASSIFIER:
+  # NAME: 'linear'
+  NAME: 'mldecoder'
+  # NAME: 'q2l'
+  POOLING: 'avg'
+  SCALE: 1
+  BN: False
+
+LOSS:
+  TYPE: 'aslloss'
+  LOSS_WEIGHT: [1]
+  SAMPLE_WEIGHT: 'weight'
+
+
+TRAIN:
+  USE_LABEL_EMBEDDING: True
+  CLIP_GRAD: True
+  BATCH_SIZE: 64
+  MAX_EPOCH: 50
+  OPTIMIZER:
+    TYPE: 'adamw'
+    WEIGHT_DECAY: 1e-4
+  LR_SCHEDULER:
+    TYPE: 'annealing_cosine'
+    LR_FT: 0.00002
+    LR_NEW: 0.00002
+  EMA:
+    ENABLE: False
+
+METRIC:
+  TYPE: 'pedestrian'
+
+VIS:
+  CAM: 'valid'
